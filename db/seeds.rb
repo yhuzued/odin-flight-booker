@@ -8,12 +8,16 @@
 
 array_of_airport = [Airport.first, Airport.last]
 
-1000.times do |i| 
+500.times do |i| 
   origin = array_of_airport.sample
+  today = Date.current
+  tomorrow = today + i
 
   destination = Airport.first if origin == Airport.last
   destination = Airport.last if origin == Airport.first
 
-  make_flight = origin.origin.build(start: DateTime.now + 1, flight_duration: 4, destination: destination)
+  make_flight = origin.origin.build(start: tomorrow, flight_duration: 4, destination: destination)
   make_flight.save
+  
+  today = tomorrow
 end

@@ -1,0 +1,22 @@
+<h1>Hello Flights</h1>
+
+<%= simple_form_for "/", method: :get do |f| %>
+  <%= f.label "From" %>
+  <%= f.select :origin, @origin, selected: 2%>
+  <%= f.label "To" %>
+  <%= f.select :destination, @destination %>
+  <%= f.label "Passanger number" %>
+  <%= f.select :passanger, 1..4 %>
+  <%= f.label "Date" %>
+  <%= f.select :date, @flight_date, selected: Date.today %>
+  <%= f.button :submit, "Search" %>
+<% end %>
+
+<ul>
+<% @search_flight.each do |flight| %>
+  <li>Plane from: <%= flight.origin.name %>, to: <%= flight.destination.name %>, flight duration: <%= flight.flight_duration %></li>
+<% end %>
+</ul>
+
+
+
