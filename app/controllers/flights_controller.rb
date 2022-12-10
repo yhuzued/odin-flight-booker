@@ -5,6 +5,8 @@ class FlightsController < ApplicationController
     @destination = Airport.all.map{ |u| [ u.name, u.id ] }
     @flight_date = Flight.all.map{ |u| [ u.start, u.start ] }
 
-    @search_flight = Flight.includes(:origin, :destination).where(start: params["/"][:date], origin: params["/"][:origin], destination: params["/"][:destination])
+    unless params["/"].nil?
+      @search_flight = Flight.includes(:origin, :destination).where(start: params["/"][:date], origin: params["/"][:origin], destination: params["/"][:destination])
+    end
   end
 end

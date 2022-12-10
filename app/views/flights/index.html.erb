@@ -12,11 +12,16 @@
   <%= f.button :submit, "Search" %>
 <% end %>
 
-<ul>
-<% @search_flight.each do |flight| %>
-  <li>Plane from: <%= flight.origin.name %>, to: <%= flight.destination.name %>, flight duration: <%= flight.flight_duration %></li>
+
+<% unless params["/"].nil? %>
+  <ul>
+  <% @search_flight.each do |flight| %>
+    <li>Plane from: <%= flight.origin.name %>, to: <%= flight.destination.name %>, flight duration: <%= flight.flight_duration %></li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
+
+
 
 
 
