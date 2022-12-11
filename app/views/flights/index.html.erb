@@ -1,27 +1,15 @@
-<h1>Hello Flights</h1>
-
-<%= simple_form_for "/", method: :get do |f| %>
+<h1>Odin Flight</h1>
+<%= simple_form_for flights_path, method: :get do |f| %>
   <%= f.label "From" %>
-  <%= f.select :origin, @origin, selected: 2%>
+  <%= f.select :origin, @airport_list %>
   <%= f.label "To" %>
-  <%= f.select :destination, @destination %>
-  <%= f.label "Passanger number" %>
+  <%= f.select :destination, @airport_list, selected: 2 %>
   <%= f.select :passanger, 1..4 %>
-  <%= f.label "Date" %>
-  <%= f.select :date, @flight_date, selected: Date.today %>
-  <%= f.button :submit, "Search" %>
+  <%= f.select :departure_day, @departure_day, selected: Date.today %>
+  <%= f.submit "Search" %>
 <% end %>
 
-
-<% unless params["/"].nil? %>
-  <ul>
-  <% @search_flight.each do |flight| %>
-    <li>Plane from: <%= flight.origin.name %>, to: <%= flight.destination.name %>, flight duration: <%= flight.flight_duration %></li>
-  <% end %>
-  </ul>
+<% unless params["/flights"].nil? %>
+  <%= render 'flights/available_flights' %>
 <% end %>
-
-
-
-
 

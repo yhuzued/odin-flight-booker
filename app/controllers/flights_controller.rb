@@ -1,12 +1,10 @@
 class FlightsController < ApplicationController
   def index
-    @index = Flight.all.includes(:origin, :destination)
-    @origin = Airport.all.map{ |u| [ u.name, u.id ] }
-    @destination = Airport.all.map{ |u| [ u.name, u.id ] }
-    @flight_date = Flight.all.map{ |u| [ u.start, u.start ] }
+    @airport_list = Airport.all.map { |u| [u.name, u.id ]}
+    @departure_day = Flight.all.map { |u| [u.start, u.start ]}
 
-    unless params["/"].nil?
-      @search_flight = Flight.includes(:origin, :destination).where(start: params["/"][:date], origin: params["/"][:origin], destination: params["/"][:destination])
-    end
+    unless params["/flights"].nil?
+      @available_flights = Flight.includes(:origin, :destination).where(origin: params["/flights"][:origin], destination: params["/flights"][:destination], start: params["/flights"][:departure_day]).map { |u| [u.origin.name, u.id]}
+    end 
   end
 end
