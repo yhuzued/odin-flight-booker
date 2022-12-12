@@ -1,1 +1,12 @@
 <h1>New</h1>
+
+<%= simple_form_for @booking, url: bookings_path do |f| %>
+   <%= f.input :flight_id, as: :hidden, input_html: { value: params["booking"][:flight_id] }  %>
+    <%= f.simple_fields_for :passenger do |fp| %>
+      <%= fp.input :name %>
+      <%= fp.input :email %>
+    <% end %>
+  <%= f.submit %>
+<% end %>
+
+<%= params %>

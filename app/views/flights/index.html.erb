@@ -4,7 +4,7 @@
   <%= f.select :origin, @airport_list %>
   <%= f.label "To" %>
   <%= f.select :destination, @airport_list, selected: 2 %>
-  <%= f.select :passanger, 1..4 %>
+  <%= f.select :number_passanger, 1..4 %>
   <%= f.select :departure_day, @departure_day, selected: Date.today %>
   <%= f.submit "Search" %>
 <% end %>

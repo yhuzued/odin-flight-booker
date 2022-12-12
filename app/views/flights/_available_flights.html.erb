@@ -1,5 +1,5 @@
 <%= simple_form_for :booking, url: new_booking_path, method: :get do |f| %>
   <%= f.collection_radio_buttons :flight_id, @available_flights, :last, :first %>
-  <%= f.input :number_passanger, as: :hidden, input_html: { value: params["/flights"][:passanger] }  %>
+  <%= f.input :number_passanger, as: :hidden, input_html: { value: params["/flights"][:number_passanger] }  %>
   <%= f.submit "Book Flight" %>
 <% end %>
