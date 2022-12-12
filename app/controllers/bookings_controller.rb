@@ -6,11 +6,12 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(allowed_post_params)
     if @booking.save
-      redirect_to root_path
-    else
-      # handle error
-      logger.error "Error saving booking: #{@booking.errors.full_messages.join(', ')}"
+      redirect_to @booking, notice: "Great!"
     end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   private
