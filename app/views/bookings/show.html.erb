@@ -1,1 +1,7 @@
-<h1>Show</h1>
+<h1>Your Booking</h1>
+<p>This flight is  from <%= @booking.flight.origin.name %> to <%= @booking.flight.destination.name %> at <%= @booking.flight.start %></p>
+<p>Flight duration: <%= @booking.flight.flight_duration %> hours </p>
+<% @passangers.each do |pas| %>
+  <p><%= pas.name %></p>
+  <p><%= pas.email %></p>
+<% end %>
