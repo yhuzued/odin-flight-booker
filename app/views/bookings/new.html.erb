@@ -1,12 +1,12 @@
 <h1>New</h1>
 
-<%= simple_form_for @booking, url: bookings_path do |f| %>
-   <%= f.input :flight_id, as: :hidden, input_html: { value: params["booking"][:flight_id] }  %>
-    <%= f.simple_fields_for :passenger do |fp| %>
-      <%= fp.input :name %>
-      <%= fp.input :email %>
+<%= simple_form_for @booking do |f| %>
+   <%= f.input :flight_id, as: :hidden, input_html: { value: params['booking'][:flight_id] }  %>
+   <% params['booking'][:number_passanger].to_i.times do %>
+    <%= f.simple_fields_for :passengers, @booking.passengers.build do |fp| %>
+      <%= fp.input :name, required: true %>
+      <%= fp.input :email, required: true, autofocus: true %>   
     <% end %>
+   <% end %>
   <%= f.submit %>
 <% end %>
-
-<%= params %>
