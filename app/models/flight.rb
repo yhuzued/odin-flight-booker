@@ -4,5 +4,5 @@ class Flight < ApplicationRecord
   belongs_to :destination, class_name: "Airport"
 
   # Association between flight, booking, and passenger
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 end
