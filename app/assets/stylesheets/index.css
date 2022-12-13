@@ -1,0 +1,102 @@
+html body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(243, 228, 228);
+}
+
+@media (max-width: 430px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+@media (min-width: 431px) {
+  .index {
+    width: 320px;
+  }
+
+  .outbound {
+    width: 430px;
+  }
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.index, .outbound{
+  padding: 2rem;
+  margin: 6px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+.index h1, .outbound h3 {
+  margin-top: 0px;;
+}
+
+#_flights_origin, #_flights_destination, #_flights_number_passanger, #_flights_departure_day {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.index input[type=submit]{
+  font-size: 17px;
+  padding: 6px;
+  margin: 12px 0px 6px 0px;
+  width: 100%;
+}
+
+.outbound .radio{
+  margin-top: 6px;
+  padding-bottom: 6px;
+  background-color: whitesmoke;
+  padding: 12px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+}
+
+.outbound .flight-choice label {
+  display: flex;
+  gap: 6px;
+}
+
+.outbound .submit-button{
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.outbound input[type=submit]{
+  font-size: 17px;
+  padding: 6px;
+  margin: 12px 0px 6px 0px;
+  width: 50%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: black;
+  margin-bottom: 12px;
+  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.5rem;
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+}
+

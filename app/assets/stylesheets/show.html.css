@@ -1,0 +1,48 @@
+.show-info {
+  display: flex;
+  justify-content: center;
+}
+
+.show {
+  padding: 2rem;
+  margin: 6px;
+  background-color: white;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+table, th, td {
+  border: 1px solid;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: aliceblue;
+}
+
+ /* The alert message box */
+.alert {
+  padding: 20px;
+  background-color: #5ada34; /* Red */
+  color: white(231, 229, 229);
+  margin-bottom: 15px;
+  border-radius: 12px;
+}
+  
+  /* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+  
+  /* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+} 

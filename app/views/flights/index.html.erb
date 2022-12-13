@@ -1,17 +1,32 @@
 <% params["/flights"].nil? ? number_parameter = 1 : number_parameter = params["/flights"][:number_passanger] %>
-
-<h1>Odin Flight</h1>
-<%= simple_form_for flights_path, method: :get do |f| %>
-  <%= f.label "From" %>
-  <%= f.select :origin, @airport_list %>
-  <%= f.label "To" %>
-  <%= f.select :destination, @airport_list, selected: 2 %>
-  <%= f.select :number_passanger, 1..4, selected: number_parameter %>
-  <%= f.select :departure_day, @departure_day, selected: Date.today %>
-  <%= f.submit "Search" %>
-<% end %>
-
-<% unless params["/flights"].nil? %>
-  <%= render 'flights/available_flights' %>
-<% end %>
-
+<div class="container">
+  <div class="index">
+    <h1>Odin Flight</h1>
+    <%= simple_form_for flights_path, method: :get do |f| %>
+      <div class="from">
+        <%= f.label "From" %>
+        <div><%= f.select :origin, @airport_list, class: "form-select" %></div>
+      </div>
+      <div class="to">
+        <%= f.label "To" %>
+        <div><%= f.select :destination, @airport_list, selected: 2 %></div>
+      </div>
+      <div class="seats">
+        <%= f.label "How many seat?" %>
+        <div><%= f.select :number_passanger, 1..4, selected: number_parameter %></div>
+      </div>
+      <div class="date">
+        <%= f.label "When?" %>
+        <div><%= f.select :departure_day, @departure_day, selected: Date.today %></div>
+      </div>
+      <div class="search">
+        <div><%= f.submit "Search" %></div>
+      </div>
+    <% end %>
+  </div>
+  <% unless params["/flights"].nil? %>
+    <div class="outbound">
+      <%= render 'flights/available_flights' %>
+    </div>
+  <% end %>
+</div>

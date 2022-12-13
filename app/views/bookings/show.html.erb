@@ -1,7 +1,29 @@
-<h1>Your Booking</h1>
-<p>This flight is  from <%= @booking.flight.origin.name %> to <%= @booking.flight.destination.name %> at <%= @booking.flight.start %></p>
-<p>Flight duration: <%= @booking.flight.flight_duration %> hours </p>
-<% @passangers.each do |pas| %>
-  <p><%= pas.name %></p>
-  <p><%= pas.email %></p>
-<% end %>
+<div class="show-info">
+  <div class="show">
+    <% if notice %>
+    <div class="alert">
+      <%= notice %>
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    </div> 
+    <% end %>
+    <h2 style="text-align: left">Booking for flight from <%= @booking.flight.origin.name %> to <%= @booking.flight.destination.name %> </h1>
+    <h3 style="text-align: left"><%= @booking.flight.start.strftime("%d %B %Y") %> | Flight duration: <%= @booking.flight.flight_duration %> hours </h2>
+    <div class="table-info">
+      <% if @passangers.length > 1 %>
+        <h4>Passengers list </h4>
+        <% @passangers.each_with_index do |pas, i| %>
+          <h5><%= i + 1 %><%= (i + 1).ordinal %> passenger</h5>
+          <p>Name: <%= pas.name %></p>
+          <p>Email: <%= pas.email %></p>
+        <% end %>
+      <% else %>
+        <% @passangers.each_with_index do |pas, i| %>
+        <p>Name: <%= pas.name %></p>
+        <p>Email: <%= pas.email %></p>
+      <% end %>
+      <% end %>
+     
+    </div>
+  </div>
+</div>
+      

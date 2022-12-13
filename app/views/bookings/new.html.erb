@@ -1,11 +1,18 @@
-<h1>New</h1>
-<%= simple_form_for @booking do |f| %>
-   <%= f.input :flight_id, as: :hidden, input_html: { value: params['booking'][:flight_id] }  %>
-   <% params['booking'][:number_passanger].to_i.times do %>
-    <%= f.simple_fields_for :passengers, @booking.passengers.build do |fp| %>
-      <%= fp.input :name, input_html: { required: true, style: "outline: none" } %>
-      <%= fp.input :email, input_html: { required: true, style: "outline: none" } %>   
+<div class="info-booking">
+  <div class="passanger_info">
+    <h1>Booking</h1>
+    <%= simple_form_for @booking do |f| %>
+       <%= f.input :flight_id, as: :hidden, input_html: { value: params['booking'][:flight_id] }  %>
+       <% params['booking'][:number_passanger].to_i.times do |i| %>
+        <%= f.simple_fields_for :passengers, @booking.passengers.build do |fp| %>
+          <h4><%= i + 1 %><%= (i + 1).ordinal %> passenger </h4>
+          <div><%= fp.label "Name", required: true %></div>
+          <div class="input-booking"><%= fp.input_field :name %></div>
+          <div><%= fp.label "Email", required: true %></div>
+          <div class="input-booking"><%= fp.input_field :email %></div>
+        <% end %>
+       <% end %>
+      <div class="booking-submit"><%= f.submit %></div>
     <% end %>
-   <% end %>
-  <%= f.submit %>
-<% end %>
+  </div>
+</div>

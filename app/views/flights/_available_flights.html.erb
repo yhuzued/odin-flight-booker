@@ -1,5 +1,13 @@
-<%= simple_form_for :booking, url: new_booking_path, method: :get do |f| %>
-  <%= f.collection_radio_buttons :flight_id, @available_flights, :last, :first %>
-  <%= f.input :number_passanger, as: :hidden, input_html: { value: params["/flights"][:number_passanger] }  %>
-  <%= f.submit "Book Flight" %>
-<% end %>
+<div class="available-flight">
+  <div class="description">
+    <h3 style="text-align: center">Outbound flight(s) from <%= @origin_fligt.name %> to <%= @destination_flight.name %></h3>
+    <h4 style="text-align: center"><%= Date.parse(params["/flights"][:departure_day]).strftime("%d %B %Y") %></h4>
+  </div>
+  <div class="booking-form">
+    <%= simple_form_for :booking, url: new_booking_path, method: :get do |f| %>
+      <%= f.input :flight_id, as: :radio_buttons, collection: @available_flights, item_wrapper_tag: :div, item_wrapper_class: 'flight-choice', required: true %>
+      <%= f.input :number_passanger, as: :hidden, input_html: { value: params["/flights"][:number_passanger] }  %>
+      <div class="submit-button"><%= f.submit "Book Flight" %></div>
+    <% end %>
+  </div>
+</div>
